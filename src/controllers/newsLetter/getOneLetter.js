@@ -1,14 +1,7 @@
-const database = require("../../utils/mockDatabase.js");
+import { NewsLetter } from "../../models";
 
-function getOneLetter(req, res) {
-  let requestId = req.params.id;
-  let data = database.find((item) => {
-    return item.id == requestId;
-  });
+export const getOneLetter = async (req, res) => {
+  let data = await NewsLetter.findById(req.params.id);
 
-  console.log(data);
-
-  res.json(data);
-}
-
-module.exports = getOneLetter;
+  res.status(200).json(data);
+};

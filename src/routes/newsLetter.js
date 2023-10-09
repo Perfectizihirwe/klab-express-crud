@@ -1,8 +1,8 @@
-const express = require("express");
+import express from "express";
+
 const newsLetterRouter = express.Router();
-const getOneLetter = require("../controllers/newsLetter/getOneLetter.js");
-const getAll = require("../controllers/newsLetter/getAll.js");
-const addNew = require("../controllers/newsLetter/addNewLetter.js");
+
+import { addNew, getAll, getOneLetter } from "../controllers/newsLetter";
 
 newsLetterRouter.get("/", getAll);
 
@@ -22,4 +22,4 @@ newsLetterRouter.delete("/", (req, res) => {
   res.send("Delete method");
 });
 
-module.exports = newsLetterRouter;
+export default newsLetterRouter;

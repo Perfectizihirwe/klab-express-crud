@@ -1,7 +1,7 @@
-const database = require("../../utils/mockDatabase");
+import { NewsLetter } from "../../models";
 
-function getAll(req, res) {
-  res.status(200).json(database);
-}
+export const getAll = async (req, res) => {
+  let data = await NewsLetter.find();
 
-module.exports = getAll;
+  res.status(200).json(data);
+};
