@@ -19,7 +19,6 @@ export const signUp = async (req, res) => {
 
     let token = generateToken({
       _id: newUser._id,
-      email: newUser.email,
     });
 
     res.status(201).json({
@@ -29,6 +28,7 @@ export const signUp = async (req, res) => {
         email: newUser.email,
         location: newUser.location,
         fullNames: newUser.fullNames,
+        role: newUser.role,
       },
     });
   } catch (error) {

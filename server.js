@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 
 app.use("/api/v1", appRouter);
 
-const PORT = 8000;
+const PORT = 8080;
 
 mongoose.connect(process.env.DB_CONNECTION_DEV).then((res) => {
   console.log("Database connected");

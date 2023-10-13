@@ -1,14 +1,17 @@
 import express from "express";
+import { verifyToken, isAdmin } from "../middleware";
 
 const newsLetterRouter = express.Router();
 
 import { addNew, getAll, getOneLetter } from "../controllers/newsLetter";
 
-newsLetterRouter.get("/", getAll);
-
-newsLetterRouter.post("/", addNew);
+newsLetterRouter.use(verifyToken);
 
 newsLetterRouter.get("/getOneLetter/:id", getOneLetter);
+
+newsLetterRouter.get("/", getAll);
+
+newsLetterRouter.post("/", isAdmin, addNew);
 
 newsLetterRouter.put("/", (req, res) => {
   res.send("Put request");
